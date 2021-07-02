@@ -41,7 +41,7 @@ void initialSendSocket(int socketNum)
 
 void spamPartialHeaders(struct sockaddr_in victim, std::vector<int> socketList, int totalSockets)
 {
-	for (std::vector<int>::iterator it = socketList.begin(); it != socketList.end(); it++) //repladce standard for loop with vector iterator 
+	for (std::vector<int>::iterator it = socketList.begin(); it != socketList.end(); it++) //Replace standard for loop with vector iterator 
 	{
 		try
 		{
