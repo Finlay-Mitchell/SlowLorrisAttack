@@ -1,5 +1,4 @@
 /*
- * while compiling in the command line, flags -std=c++0x and -pthread must be set, for now.
  * Not sure how well this'll work so far on Windows and Linux as it's yet to be tested. In theory, it should work fine due to kernel checks and lib substitution. It throws no errors on Windows currently.
  */
 
